@@ -14,7 +14,7 @@ class MySplashScreen extends StatefulWidget {
 
 class _MySplashScreenState extends State<MySplashScreen> {
   startTimer() {
-    Timer(const Duration(seconds: 2), () async {
+    Timer(const Duration(seconds: 10), () async {
       // if seller is logged in already
       if (firebaseAuth.currentUser != null) {
         Navigator.pushReplacement(

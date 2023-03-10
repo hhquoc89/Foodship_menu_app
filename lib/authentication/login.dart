@@ -30,7 +30,7 @@ class _LoginScreenState extends State<LoginScreen> {
           context: context,
           builder: (c) {
             return ErrorDialog(
-              message: "Please write Email or Password !!!",
+              message: "Vui lòng nhập email và mật khẩu!!",
             );
           });
     }
@@ -59,7 +59,8 @@ class _LoginScreenState extends State<LoginScreen> {
           context: context,
           builder: (c) {
             return ErrorDialog(
-              message: "Invalid user or password!!! Please try again",
+              message:
+                  "Tài khoản hoặc mật khẩu không đúng ! Vui lòng nhập lại ",
             );
           });
     }
@@ -96,7 +97,8 @@ class _LoginScreenState extends State<LoginScreen> {
             context: context,
             builder: (c) {
               return ErrorDialog(
-                message: "Invalid the account/password. Please try it again",
+                message:
+                    "Tài khoản hoặc mật khẩu không đúng ! Vui lòng nhập lại",
               );
             });
       }
@@ -132,7 +134,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 CustomTextField(
                   data: Icons.lock,
                   controller: passwordController,
-                  hintText: "Password",
+                  hintText: "Mật khẩu",
                   isObsecre: true,
                 ),
               ],
@@ -147,7 +149,7 @@ class _LoginScreenState extends State<LoginScreen> {
               formValidation();
             },
             child: const Text(
-              "Sign Up",
+              "Đăng nhập",
               style:
                   TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
             ),

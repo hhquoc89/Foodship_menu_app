@@ -8,11 +8,32 @@ class DoneDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return AlertDialog(
       key: key,
-      content: Text(message!),
+      content: SizedBox(
+          height: MediaQuery.of(context).size.height * .09,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const CircleAvatar(
+                radius: 15,
+                backgroundColor: Colors.green,
+                child: Center(
+                  child: Icon(
+                    Icons.done,
+                    color: Colors.white,
+                    size: 14,
+                  ),
+                ),
+              ),
+              Text(
+                message!,
+                style: TextStyle(fontSize: 20),
+              ),
+            ],
+          )),
       actions: [
         ElevatedButton(
           child: const Center(
-            child: Text("Ok"),
+            child: Text("Ok", style: TextStyle(fontSize: 20)),
           ),
           style: ElevatedButton.styleFrom(
             primary: Colors.green,

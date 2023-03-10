@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
       title: 'Menu',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        fontFamily: 'Roboto',
       ),
       home: const MySplashScreen(),
     );

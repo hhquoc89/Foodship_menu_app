@@ -153,7 +153,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             height: 100,
           ),
           Text(
-            'Please contact the admin to Register !!!',
+            'Vui lòng liên hệ với chủ nhà hàng!!!',
             style: TextStyle(fontSize: 18),
           ),
         ],

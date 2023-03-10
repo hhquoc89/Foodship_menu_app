@@ -15,6 +15,11 @@ class ItemsDesignWidget extends StatefulWidget {
 class _ItemsDesignWidgetState extends State<ItemsDesignWidget> {
   @override
   Widget build(BuildContext context) {
+    String? message;
+    String? status = widget.model!.status;
+
+    status == 'available' ? message = "Còn món" : message = "Hết món";
+
     return InkWell(
       onTap: () {
         Navigator.push(
@@ -25,30 +30,31 @@ class _ItemsDesignWidgetState extends State<ItemsDesignWidget> {
       },
       splashColor: Colors.amber,
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(2.0),
         child: Container(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
-          child: Column(
-            children: [
-              Divider(
-                height: 4,
-                thickness: 3,
-                color: Colors.grey[300],
+          decoration: BoxDecoration(
+              // color: Colors.blue,
+              borderRadius: const BorderRadius.all(
+                Radius.circular(20.0),
               ),
-              SizedBox(height: 10),
+              border: Border.all(
+                  color: Color.fromARGB(255, 253, 123, 177), width: 1)),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
               ClipRRect(
-                borderRadius: BorderRadius.circular(20.0),
+                borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(8.0),
+                    topRight: Radius.circular(8.0)),
                 child: Image.network(
                   widget.model!.thumbnailUrl!,
-                  height: MediaQuery.of(context).size.height * .5,
-                  width: MediaQuery.of(context).size.width * .45,
+                  height: MediaQuery.of(context).size.height * .3,
+                  width: MediaQuery.of(context).size.width * .35,
                   fit: BoxFit.cover,
                   loadingBuilder: (BuildContext context, Widget child,
                       ImageChunkEvent? loadingProgress) {
                     if (loadingProgress == null) return child;
-                    return Container(
-                        width: 100, height: 100, child: circularProgress());
+                    return Container(child: circularProgress());
                   },
                 ),
               ),
@@ -58,25 +64,39 @@ class _ItemsDesignWidgetState extends State<ItemsDesignWidget> {
               Text(
                 widget.model!.title!,
                 style: const TextStyle(
-                  color: Colors.cyan,
-                  fontSize: 30,
-                ),
+                    color: Colors.pink,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold),
               ),
               Text(
                 widget.model!.shortInfo!,
+                textAlign: TextAlign.center,
                 style: const TextStyle(
-                  color: Colors.grey,
-                  fontSize: 24,
+                  color: Colors.black87,
+                  fontSize: 20,
                 ),
               ),
               const SizedBox(
                 height: 5.0,
               ),
+              Divider(
+                height: 10,
+                thickness: 2,
+                endIndent: 10,
+                indent: 10,
+              ),
               Text(
                 '${widget.model!.price} VND',
-                style: const TextStyle(
-                  color: Colors.green,
-                  fontSize: 28,
+                style: TextStyle(
+                    color: status == 'available' ? Colors.amber : Colors.red,
+                    fontSize: 28,
+                    fontWeight: FontWeight.bold),
+              ),
+              Text(
+                status == "available" ? message : message,
+                style: TextStyle(
+                  fontSize: 24,
+                  color: status == 'available' ? Colors.green : Colors.red,
                 ),
               ),
             ],
